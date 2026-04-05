@@ -9,14 +9,13 @@
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Roboto', sans-serif; background: #0f172a; color: white; overflow-x: hidden; }
+    body { font-family: 'Roboto', sans-serif; background: #1f1f1f; color: #e2e2e2; overflow-x: hidden; }
 
-    /* Fundo animado */
     body::before {
       content: "";
       position: fixed;
       top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(270deg, #3b82f6, #9333ea, #22c55e, #f59e0b);
+      background: linear-gradient(270deg, #2f2f2f, #4a4a4a, #2f2f2f, #4a4a4a);
       background-size: 800% 800%;
       z-index: -1;
       animation: gradientBG 20s ease infinite;
@@ -30,19 +29,17 @@
     header {
       text-align: center;
       padding: 60px 20px;
-      background: rgba(0,0,0,0.4);
+      background: rgba(50,50,50,0.5);
       backdrop-filter: blur(10px);
-      border-bottom: 2px solid #fff1;
+      border-bottom: 2px solid #333;
     }
-
-    h1 { font-family: 'Montserrat', sans-serif; font-size: 48px; margin-bottom: 10px; color: #fff; }
-    p { font-size: 20px; color: #e2e8f0; }
-
+    header h1 { font-family: 'Montserrat', sans-serif; font-size: 48px; margin-bottom: 10px; color: #fff; }
+    header p { font-size: 20px; color: #ccc; }
     .botao {
       display: inline-block;
       margin-top: 20px;
       padding: 14px 30px;
-      background: #22c55e;
+      background: #555;
       color: white;
       text-decoration: none;
       font-weight: bold;
@@ -50,51 +47,58 @@
       transition: all 0.3s ease;
     }
     .botao:hover {
-      background: #16a34a;
+      background: #888;
       transform: scale(1.1);
-      box-shadow: 0 0 15px #22c55e;
+      box-shadow: 0 0 15px #aaa;
     }
 
-    section { padding: 60px 20px; text-align: center; }
-    section h2 { font-family: 'Montserrat', sans-serif; font-size: 36px; margin-bottom: 40px; color: #fff; }
-
-    /* Filtro de categorias */
-    .filtro {
-      margin-bottom: 30px;
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+    section h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #fff;
+      border-bottom: 2px solid #555;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .filtro { margin-bottom: 40px; }
     .filtro button {
-      padding: 10px 20px;
+      padding: 12px 25px;
       margin: 5px;
       border: none;
-      border-radius: 10px;
-      background: #3b82f6;
+      border-radius: 12px;
+      background: #555;
       color: white;
       font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
-    .filtro button:hover, .filtro button.active {
-      background: #9333ea;
-    }
+    .filtro button:hover, .filtro button.active { background: #888; }
 
-    /* Produtos */
     .produtos {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 25px;
+      gap: 30px;
     }
     .produto {
-      background: rgba(255,255,255,0.05);
+      background: rgba(60,60,60,0.6);
       border-radius: 20px;
-      width: 250px;
+      width: 260px;
       padding: 20px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       backdrop-filter: blur(10px);
     }
     .produto:hover {
       transform: translateY(-10px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.7);
     }
     .produto img {
       width: 100%;
@@ -102,39 +106,39 @@
       margin-bottom: 15px;
     }
     .produto h3 { font-size: 22px; color: #fff; margin-bottom: 10px; }
-    .produto p { color: #e2e8f0; margin-bottom: 15px; }
-    .produto .preco {
-      font-weight: bold;
+    .produto p { color: #ccc; margin-bottom: 15px; }
+    .produto .preco { font-weight: bold; font-size: 18px; color: #22c55e; }
+
+    .sobre p {
       font-size: 18px;
-      color: #22c55e;
+      line-height: 1.6;
+      margin: 10px 0;
+      color: #ccc;
     }
 
     footer {
       text-align: center;
-      padding: 30px;
-      background: rgba(0,0,0,0.5);
+      padding: 40px 20px;
+      background: rgba(40,40,40,0.5);
       font-size: 14px;
-      border-top: 2px solid #fff1;
+      border-top: 2px solid #333;
+      color: #ccc;
     }
 
-    /* Fade-in scroll */
     .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
     .fade-in.show { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 
 <body>
-
   <header class="fade-in">
     <h1>Loja da Danielle 🚀</h1>
     <p>Produtos modernos direto para você</p>
-    <a class="botao" href="https://wa.me/55189996786332">Comprar no WhatsApp</a>
+    <a class="botao" href="https://wa.me/5518996786332">Comprar no WhatsApp</a>
   </header>
 
   <section class="fade-in">
     <h2>Produtos</h2>
-
-    <!-- Filtro -->
     <div class="filtro">
       <button class="active" onclick="filtrar('todos')">Todos</button>
       <button onclick="filtrar('roupas')">Roupas</button>
@@ -143,29 +147,25 @@
     </div>
 
     <div class="produtos">
-      <!-- Produto 1 -->
       <div class="produto todos roupas">
         <img src="https://via.placeholder.com/250x150.png?text=Produto+1" alt="Produto 1">
         <h3>Camisa Estilosa</h3>
         <p>Camisa confortável e moderna</p>
         <p class="preco">R$59,90</p>
       </div>
-      <!-- Produto 2 -->
       <div class="produto todos acessórios">
         <img src="https://via.placeholder.com/250x150.png?text=Produto+2" alt="Produto 2">
         <h3>Relógio Fashion</h3>
         <p>Relógio elegante para o dia a dia</p>
         <p class="preco">R$129,90</p>
       </div>
-      <!-- Produto 3 -->
-      <div class="produtos eletronicos">
+      <div class="produto todos eletronicos">
         <img src="https://via.placeholder.com/250x150.png?text=Produto+3" alt="Produto 3">
         <h3>Fone Bluetooth</h3>
         <p>Som de alta qualidade e sem fio</p>
         <p class="preco">R$199,90</p>
       </div>
-      <!-- Produto 4 -->
-      <div class="produto todas roupas">
+      <div class="produto todos roupas">
         <img src="https://via.placeholder.com/250x150.png?text=Produto+4" alt="Produto 4">
         <h3>Vestido Casual</h3>
         <p>Vestido leve e confortável</p>
@@ -174,41 +174,39 @@
     </div>
   </section>
 
+  <section class="fade-in sobre">
+    <h2>Por que escolher a Loja da Danielle?</h2>
+    <p>✔️ Produtos de qualidade e modernos</p>
+    <p>✔️ Entrega rápida e segura</p>
+    <p>✔️ Atendimento direto pelo WhatsApp</p>
+    <p>✔️ Preço justo e transparente</p>
+  </section>
+
   <footer class="fade-in">
-    <p>© 2026 - Danielle | WhatsApp: (18) 999678-6332</p>
+    <p>© 2026 - Danielle | WhatsApp: (18) 9967-86332</p>
   </footer>
 
   <script>
-    // Scroll fade-in
     const faders = document.querySelectorAll('.fade-in');
     window.addEventListener('scroll', () => {
       faders.forEach(el => {
         const top = el.getBoundingClientRect().top;
         const height = window.innerHeight;
-        if(top < height - 100) {
-          el.classList.add('show');
-        }
+        if(top < height - 100) el.classList.add('show');
       });
     });
     window.dispatchEvent(new Event('scroll'));
 
-    // Filtro de categorias
     function filtrar(categoria) {
       const produtos = document.querySelectorAll('.produto');
       const botoes = document.querySelectorAll('.filtro button');
-
       botoes.forEach(btn => btn.classList.remove('active'));
       event.target.classList.add('active');
-
       produtos.forEach(prod => {
-        if(categoria === 'todos' || prod.classList.contains(categoria)) {
-          prod.style.display = 'block';
-        } else {
-          prod.style.display = 'none';
-        }
+        if(categoria === 'todos' || prod.classList.contains(categoria)) prod.style.display = 'block';
+        else prod.style.display = 'none';
       });
     }
   </script>
-
 </body>
 </html>
